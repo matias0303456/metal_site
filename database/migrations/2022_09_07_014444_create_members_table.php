@@ -14,7 +14,16 @@ return new class extends Migration
     public function up()
     {
         Schema::create('members', function (Blueprint $table) {
-            $table->id();
+            $table->engine = 'InnoDB';
+            $table->charset = 'utf8mb4';
+            $table->collation = 'utf8mb4_unicode_ci';
+
+            $table->increments('id');
+            $table->string('name');
+            $table->string('role');
+            $table->date('birth_date');
+            $table->date('birth_place');
+            $table->foreignId('country_id')->constrained();
             $table->timestamps();
         });
     }
