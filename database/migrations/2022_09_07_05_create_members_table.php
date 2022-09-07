@@ -13,20 +13,15 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('bands', function (Blueprint $table) {
+        Schema::create('members', function (Blueprint $table) {
             $table->engine = 'InnoDB';
-            $table->charset = 'utf8mb4';
-            $table->collation = 'utf8mb4_unicode_ci';
 
-            $table->increments('id');
+            $table->bigIncrements('id');
             $table->string('name');
-            $table->foreign('country_id')
-                ->references('id')
-                ->on('countries')
-                ->onUpdate('cascade')
-                ->onDelete('cascade');
-            $table->integer('year');
-            $table->boolean('is_active');
+            $table->string('role');
+            $table->date('birth_date');
+            $table->date('birth_place');
+            $table->foreignId('country_id')->constrained();
             $table->timestamps();
         });
     }
@@ -38,6 +33,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('bands');
+        Schema::dropIfExists('members');
     }
 };

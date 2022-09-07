@@ -13,17 +13,14 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('members', function (Blueprint $table) {
+        Schema::create('songs', function (Blueprint $table) {
             $table->engine = 'InnoDB';
-            $table->charset = 'utf8mb4';
-            $table->collation = 'utf8mb4_unicode_ci';
 
-            $table->increments('id');
-            $table->string('name');
-            $table->string('role');
-            $table->date('birth_date');
-            $table->date('birth_place');
-            $table->foreignId('country_id')->constrained();
+            $table->bigIncrements('id');
+            $table->string('title');
+            $table->string('duration');
+            $table->string('composer');
+            $table->foreignId('album_id')->constrained();
             $table->timestamps();
         });
     }
@@ -35,6 +32,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('members');
+        Schema::dropIfExists('songs');
     }
 };

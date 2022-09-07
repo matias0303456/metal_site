@@ -15,10 +15,8 @@ return new class extends Migration
     {
         Schema::create('albums', function (Blueprint $table) {
             $table->engine = 'InnoDB';
-            $table->charset = 'utf8mb4';
-            $table->collation = 'utf8mb4_unicode_ci';
 
-            $table->increments('id');
+            $table->bigIncrements('id');
             $table->string('name');
             $table->foreignId('band_id')
                 ->constrained()

@@ -13,13 +13,18 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('genres', function (Blueprint $table) {
+        Schema::create('bands', function (Blueprint $table) {
             $table->engine = 'InnoDB';
-            $table->charset = 'utf8mb4';
-            $table->collation = 'utf8mb4_unicode_ci';
 
-            $table->increments('id');
-            $table->string('name')->unique();
+            $table->bigIncrements('id');
+            $table->string('name');
+            $table->foreignId('country_id')
+                ->references('id')
+                ->on('countries')
+                ->onDelete('cascade')
+                ->onUpdate('cascade');
+            $table->integer('year');
+            $table->boolean('is_active');
             $table->timestamps();
         });
     }
@@ -31,6 +36,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('genres');
+        Schema::dropIfExists('bands');
     }
 };
