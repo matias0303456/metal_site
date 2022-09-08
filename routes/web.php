@@ -15,7 +15,11 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('home');
 });
 
-Route::get('/countries', [CountryController::class, 'getCountries']);
+Route::get('/paises', [CountryController::class, 'getCountries']);
+Route::get('/nuevo-pais', function () {
+    return view('countries.new');
+});
+Route::post('store-country', [CountryController::class, 'createCountry']);
