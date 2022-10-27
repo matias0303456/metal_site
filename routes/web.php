@@ -16,10 +16,10 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('home');
-});
+})->name('home');
 
-Route::get('/paises', [CountryController::class, 'getCountries']);
-Route::get('/nuevo-pais', function () {
-    return view('countries.new');
-});
-Route::post('store-country', [CountryController::class, 'createCountry']);
+Route::get('/countries', [CountryController::class, 'getCountries'])->name('get_countries');
+Route::get('/country/{id?}', [CountryController::class, 'getCountry'])->name('get_country');
+Route::post('/save-country', [CountryController::class, 'createCountry'])->name('store_country');
+Route::get('/update-country/{id}', [CountryController::class, 'updateCountry'])->name('update_country');
+Route::get('/delete-country/{id}', [CountryController::class, 'deleteCountry'])->name('delete_country');

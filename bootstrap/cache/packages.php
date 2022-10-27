@@ -1,4 +1,18 @@
 <?php return array (
+  'blade-ui-kit/blade-icons' => 
+  array (
+    'providers' => 
+    array (
+      0 => 'BladeUI\\Icons\\BladeIconsServiceProvider',
+    ),
+  ),
+  'codeat3/blade-typicons' => 
+  array (
+    'providers' => 
+    array (
+      0 => 'Codeat3\\BladeTypicons\\BladeTypiconsServiceProvider',
+    ),
+  ),
   'laravel/sail' => 
   array (
     'providers' => 

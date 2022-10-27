@@ -5,43 +5,62 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <?php echo $__env->yieldContent('title'); ?>
+    <?php echo app('Illuminate\Foundation\Vite')('resources/css/app.css'); ?>
 </head>
 
-<body>
+<body class="bg-zinc-900 text-zinc-900 font-mono p-2">
 
-    <header>
-        <h1>
-            El portal del metal
+    <header class="bg-slate-50 rounded-sm p-3 px-8 flex justify-between">
+        <h1 class="p-1">
+            The Portal of Metal
         </h1>
         <nav>
-            <ul>
-                <li>
-                    <a href="/">
-                        Inicio
+            <ul class="flex gap-3">
+                <a href="<?php echo e(route('home')); ?>">
+                    <li class="p-1 duration-75 hover:rounded-sm hover:bg-zinc-500 hover:text-slate-50">
+                        Home
+                    </li>
+                </a>
+                <li class="p-1 duration-75 hover:rounded-sm hover:bg-zinc-500 hover:text-slate-50">
+                    <a href="">
+                        Genres
                     </a>
                 </li>
-                <li>Géneros</li>
-                <li>
-                    <a href="/bandas">
-                        Bandas
-                    </a>
-                </li>
-                <li>Álbumes</li>
-                <li>Canciones</li>
-                <li>Integrantes</li>
-                <li>
-                    <a href="/paises">
-                        Países
-                    </a>
-                </li>
+                <a href="">
+                    <li class="p-1 duration-75 hover:rounded-sm hover:bg-zinc-500 hover:text-slate-50">
+                        Bands
+                    </li>
+                </a>
+                <a href="">
+                    <li class="p-1 duration-75 hover:rounded-sm hover:bg-zinc-500 hover:text-slate-50">
+                        Albums
+                    </li>
+                </a>
+                <a href="">
+                    <li class="p-1 duration-75 hover:rounded-sm hover:bg-zinc-500 hover:text-slate-50">
+                        Songs
+                    </li>
+                </a>
+                <a href="">
+                    <li class="p-1 duration-75 hover:rounded-sm hover:bg-zinc-500 hover:text-slate-50">
+                        Members
+                    </li>
+                </a>
+                <a href="<?php echo e(route('get_countries')); ?>">
+                    <li class="p-1 duration-75 hover:rounded-sm hover:bg-zinc-500 hover:text-slate-50">
+                        Countries
+                    </li>
+                </a>
             </ul>
         </nav>
     </header>
 
-    <?php echo $__env->yieldContent('content'); ?>
+    <main class="bg-slate-50 my-1 rounded-sm p-3">
+        <?php echo $__env->yieldContent('content'); ?>
+    </main>
 
-    <footer>
-        El portal del metal | Todos los derechos reservados &copy; <?= date('Y') ?>
+    <footer class="bg-slate-50 rounded-sm p-1 absolute bottom-0 right-0 text-xs ">
+        The Portal of Metal | All rights reserved &copy; <?= date('Y') ?>
     </footer>
 
 </body>

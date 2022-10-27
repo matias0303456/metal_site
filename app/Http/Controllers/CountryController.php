@@ -15,6 +15,18 @@ class CountryController extends Controller
         ]);
     }
 
+    public function getCountry($id = null)
+    {
+        if ($id == null) {
+            $country = null;
+        } else {
+            $country = Country::where('id', $id)->first();
+        }
+        return view('countries.new', [
+            'country' => $country
+        ]);
+    }
+
     public function createCountry(Request $request)
     {
         $request->validate([
@@ -25,26 +37,26 @@ class CountryController extends Controller
             'name' => $request->name,
             'iso_code' => $request->iso_code
         ]);
-        return redirect('/paises');
+        return redirect()->route('get_countries');
     }
 
     public function updateCountry(Request $request, $id)
     {
-        $validated = $request->validate([
+        $request->validate([
             'name' => 'required',
             'iso_code' => 'required|max:2'
         ]);
-        echo $validated;
-        $country = Country::where('id', $id)
+        Country::where('id', $id)
             ->update([
                 'name' => $request->name,
                 'iso_code' => $request->iso_code
             ]);
-        echo $country;
+        return redirect()->route('get_countries');
     }
 
     public function deleteCountry($id)
     {
         Country::destroy($id);
+        return redirect()->route('get_countries');
     }
 }
