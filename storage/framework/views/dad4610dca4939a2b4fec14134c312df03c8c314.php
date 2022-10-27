@@ -16,11 +16,11 @@
         <?php echo csrf_field(); ?>
         <div class="flex justify-between gap-3">
             <label class="block" for="name">Name</label>
-            <input type="text" name="name" class="px-2 rounded-sm" />
+            <input type="text" name="name" class="px-2 rounded-sm" value="<?php echo e(old('name')); ?>" />
         </div>
         <div class="mt-2 flex justify-between gap-3">
             <label for="iso_code">ISO code</label>
-            <input type="text" name="iso_code" class="px-2 rounded-sm" />
+            <input type="text" name="iso_code" class="px-2 rounded-sm" value="<?php echo e(old('iso_code')); ?>" />
         </div>
         <input type="submit" value="Save" class="mt-3 w-full bg-zinc-500 text-slate-50 p-1 text-sm rounded-sm hover:cursor-pointer" />
     </form>

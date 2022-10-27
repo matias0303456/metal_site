@@ -34,8 +34,8 @@ class CountryController extends Controller
             'iso_code' => 'required|max:2'
         ]);
         Country::create([
-            'name' => $request->name,
-            'iso_code' => $request->iso_code
+            'name' => ucfirst($request->name),
+            'iso_code' => strtoupper($request->iso_code)
         ]);
         return redirect()->route('get_countries');
     }
@@ -48,8 +48,8 @@ class CountryController extends Controller
         ]);
         Country::where('id', $id)
             ->update([
-                'name' => $request->name,
-                'iso_code' => $request->iso_code
+                'name' => ucfirst($request->name),
+                'iso_code' => strtoupper($request->iso_code)
             ]);
         return redirect()->route('get_countries');
     }
